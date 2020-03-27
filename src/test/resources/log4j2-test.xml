@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configuration>
+<Configuration monitorInterval="30">
+   <Appenders>
+      <Console name="Console" target="SYSTEM_OUT">
+         <PatternLayout pattern="%date | %-5level | %threadName | %-55c{.1} | %message%n%throwable" />
+      </Console>
+   </Appenders>
+
+   <Loggers>
+      <!-- LOG everything at specified level -->
+      <Root level="INFO">
+         <AppenderRef ref="Console" />
+      </Root>
+
+      <!-- LOG packages at specified level -->
+      <Logger name="org.example" level="DEBUG" />
+      <Logger name="org.springframework" level="WARN" />
+
+   </Loggers>
+
+</Configuration>

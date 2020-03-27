@@ -1,0 +1,16 @@
+# Eclipse
+.classpath
+.project
+.settings/
+*.launch
+
+#Maven
+log/
+target
+
+# Spring
+.springBeans
+
+# Application
+temp/**/*
+config/**/*
