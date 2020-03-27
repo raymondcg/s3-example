@@ -93,10 +93,23 @@ public class DataDao {
 
     public void deleteObject( String bucketName, String fileName ) {
         try {
-            s3Client.deleteObject( bucketName, fileName );
+            if ( s3Client.doesObjectExist( bucketName, fileName ) ) {
+                s3Client.deleteObject( bucketName, fileName );
+            }
         } catch ( SdkClientException ex ) {
             LOGGER.error( "Error saving file to S3.", ex );
         }
+    }
+
+    public Boolean doesObjectExist( String bucketName, String fileName ) {
+        try {
+            if ( s3Client.doesObjectExist( bucketName, fileName ) ) {
+                return true;
+            }
+        } catch ( SdkClientException ex ) {
+            LOGGER.error( "Error saving file to S3.", ex );
+        }
+        return false;
     }
 
     public void createObject( String bucketName, String fileName, InputStream inputStream ) {
